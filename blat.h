@@ -8,6 +8,8 @@ long long blat_microseconds(void);
 
 #ifdef BLAT_DO_IMPLEMENTATION
 
+#ifdef _WIN32
+
 #include <profileapi.h> /* for QueryPerformanceFrequency, QueryPerformanceCounter */
 #include <synchapi.h> /* for Sleep */
 
@@ -28,5 +30,7 @@ long long blat_microseconds(void)
     QueryPerformanceCounter(&ret);
     return (1000 * 1000 * ret.QuadPart) / blat_gs_frequency.QuadPart;
 }
+
+#endif /* _WIN32 */
 
 #endif /* BLAT_DO_IMPLEMENTATION */
