@@ -4,6 +4,9 @@
 double blat_seconds(void);
 long long blat_microseconds(void);
 
+double blat_secondsdelta(double * start);
+long long blat_microsecondsdelta(long long * start);
+
 #endif /* BLAT_H_FILE_INCLUDED */
 
 #ifdef BLAT_DO_IMPLEMENTATION
@@ -32,5 +35,9 @@ long long blat_microseconds(void)
 }
 
 #endif /* _WIN32 */
+
+/* non platform specific one liner helper functions */
+double blat_secondsdelta(double * start) {return blat_seconds() - (start ? *start : 0);}
+long long blat_microsecondsdelta(long long * start) {return blat_microseconds() - (start ? *start : 0);}
 
 #endif /* BLAT_DO_IMPLEMENTATION */

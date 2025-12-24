@@ -12,9 +12,16 @@ static long long fib(int n)
 
 int main(void)
 {
+    long long microseconds;
+    double seconds;
     int i;
+
+    microseconds = blat_microseconds();
+    seconds = blat_seconds();
+
     printf("start times = %f %lld\n", blat_seconds(), blat_microseconds());
     for(i = 0; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
     printf("end times = %f %lld\n", blat_seconds(), blat_microseconds());
+    printf("elapsed = %f %lld\n", blat_secondsdelta(&seconds), blat_microsecondsdelta(&microseconds));
     return 0;
 }
