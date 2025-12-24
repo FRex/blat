@@ -4,6 +4,9 @@
 double blat_seconds(void);
 long long blat_microseconds(void);
 
+void blat_sleepseconds(double seconds);
+void blat_sleepmicroseconds(double microseconds);
+
 double blat_secondsdelta(double * start);
 long long blat_microsecondsdelta(long long * start);
 
@@ -33,6 +36,10 @@ long long blat_microseconds(void)
     QueryPerformanceCounter(&ret);
     return (1000 * 1000 * ret.QuadPart) / blat_priv_gs_frequency.QuadPart;
 }
+
+/* TODO: consider using timeGetDevCaps then doing timeBeginPeriod/timeEndPeriod with wPeriodMin */
+void blat_sleepseconds(double seconds) {Sleep((DWORD)(seconds * 1000.0));}
+void blat_sleepmicroseconds(double microseconds) {Sleep((DWORD)(microseconds / 1000.0));}
 
 #endif /* _WIN32 */
 
