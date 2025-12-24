@@ -20,7 +20,7 @@ int main(void)
     milliseconds = blat_milliseconds();
     seconds = blat_seconds();
 
-    for(i = 0; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
+    for(i = 35; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
     printf("elapsed s ms us = %.6f %.3f %lld\n", blat_seconds() - seconds, blat_milliseconds() - milliseconds, blat_microseconds() - microseconds);
     return 0;
 }
