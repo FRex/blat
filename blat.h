@@ -30,6 +30,7 @@
 
     On Windows - Sleep and QueryPerformanceCounter/QueryPerformanceFrequency are used.
     QueryPerformanceFrequency is called once and the result stored in a global variable.
+    There is no error checking since on Windows XP and later these functions can't fail.
 
     On Linux clock_gettime with CLOCK_MONOTONIC_RAW and nanosleep are used.
 
