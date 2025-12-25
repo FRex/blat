@@ -116,7 +116,7 @@ double blat_seconds(void)
 {
     struct timespec ts;
     /* TODO: consider using CLOCK_MONOTONIC outside */
-    clock_gettime(CLOCK_MONOTONIC_RAW , &ts);
+    if(clock_gettime(CLOCK_MONOTONIC_RAW , &ts) != 0) return 0.0;
     return ts.tv_sec + ts.tv_nsec / 1000000000.0;
 }
 
@@ -124,7 +124,7 @@ double blat_milliseconds(void)
 {
     struct timespec ts;
     /* TODO: consider using CLOCK_MONOTONIC outside */
-    clock_gettime(CLOCK_MONOTONIC_RAW , &ts);
+    if(clock_gettime(CLOCK_MONOTONIC_RAW , &ts) != 0) return 0.0;
     return 1000.0 * ts.tv_sec + ts.tv_nsec / 1000000.0;
 }
 
@@ -132,7 +132,7 @@ long long blat_microseconds(void)
 {
     struct timespec ts;
     /* TODO: consider using CLOCK_MONOTONIC outside */
-    clock_gettime(CLOCK_MONOTONIC_RAW , &ts);
+    if(clock_gettime(CLOCK_MONOTONIC_RAW , &ts) != 0) return 0;
     return 1000000ll * ts.tv_sec + ts.tv_nsec / 1000;
 }
 
