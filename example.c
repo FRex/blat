@@ -39,5 +39,12 @@ int main(void)
     for(i = 38; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
     printTimes();
 
+    /* try various sleeping functions and amounts */
+#define DO_PRINT_AND_TIME(code) do{saveTimes(); printf("doing " #code "\n"); code; printTimes();}while(0)
+    DO_PRINT_AND_TIME(blat_sleepseconds(1.234));
+    DO_PRINT_AND_TIME(blat_sleepmilliseconds(1234));
+    DO_PRINT_AND_TIME(blat_sleepmicroseconds(1234000));
+#undef DO_PRINT_AND_TIME
+
     return 0;
 }
