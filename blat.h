@@ -59,8 +59,8 @@ void blat_sleepmicroseconds(long long microseconds);
 
 #ifdef _WIN32
 
-#include <profileapi.h> /* for QueryPerformanceFrequency, QueryPerformanceCounter */
-#include <synchapi.h> /* for Sleep */
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h> /* for QueryPerformanceFrequency, QueryPerformanceCounter, Sleep */
 
 static LARGE_INTEGER blat_priv_gs_frequency;
 
