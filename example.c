@@ -15,9 +15,9 @@ static double seconds, milliseconds;
 
 static void saveTimes(void)
 {
-    microseconds = blat_microseconds();
-    milliseconds = blat_milliseconds();
     seconds = blat_seconds();
+    milliseconds = blat_milliseconds();
+    microseconds = blat_microseconds();
 }
 
 static void printTimes(void)
