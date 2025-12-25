@@ -1,6 +1,8 @@
 #ifndef BLAT_H_FILE_INCLUDED
 #define BLAT_H_FILE_INCLUDED
 
+const char * blat_type(void);
+
 double blat_seconds(void);
 double blat_milliseconds(void);
 long long blat_microseconds(void);
@@ -19,6 +21,8 @@ void blat_sleepmicroseconds(long long microseconds);
 #include <synchapi.h> /* for Sleep */
 
 static LARGE_INTEGER blat_priv_gs_frequency;
+
+const char * blat_type(void) {return "blat_winapi";}
 
 double blat_seconds(void)
 {
@@ -59,6 +63,8 @@ void blat_sleepmicroseconds(long long microseconds) {Sleep((DWORD)(microseconds 
 #endif
 
 #include <time.h> /* for nanosleep, clock_gettime */
+
+const char * blat_type(void) {return "blat_linux";}
 
 double blat_seconds(void)
 {

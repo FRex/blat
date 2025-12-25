@@ -34,6 +34,8 @@ int main(void)
 {
     int i;
 
+    printf("blat_type = %s\n\n", blat_type());
+
     /* spend some time calculating high up fib terms */
     saveTimes();
     for(i = 38; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
