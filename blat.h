@@ -53,6 +53,11 @@ void blat_sleepmicroseconds(long long microseconds) {Sleep((DWORD)(microseconds 
 
 #ifdef __linux__
 
+/* to allow using non-std functions from posix from time.h */
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 199309L
+#endif
+
 #include <time.h> /* for nanosleep, clock_gettime */
 
 double blat_seconds(void)
