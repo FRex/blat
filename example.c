@@ -10,19 +10,34 @@ static long long fib(int n)
     return fib(n - 1) + fib(n - 2);
 }
 
-int main(void)
-{
-    long long microseconds;
-    double seconds, milliseconds;
-    int i;
+static long long microseconds;
+static double seconds, milliseconds;
 
+static void saveTimes(void)
+{
     microseconds = blat_microseconds();
     milliseconds = blat_milliseconds();
     seconds = blat_seconds();
+}
+
+static void printTimes(void)
+{
+    printf(
+        "elapsed: %.6fs %.3fms %lldus\n\n",
+        blat_seconds() - seconds,
+        blat_milliseconds() - milliseconds,
+        blat_microseconds() - microseconds
+    );
+}
+
+int main(void)
+{
+    int i;
 
     /* spend some time calculating high up fib terms */
-    for(i = 35; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
+    saveTimes();
+    for(i = 38; i < 41; ++i) printf("fib(%d) = %lld\n", i, fib(i));
+    printTimes();
 
-    printf("elapsed s ms us = %.6f %.3f %lld\n", blat_seconds() - seconds, blat_milliseconds() - milliseconds, blat_microseconds() - microseconds);
     return 0;
 }
