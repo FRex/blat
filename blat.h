@@ -14,6 +14,9 @@
     including this header, and in all other sources just include this file
     and use functions described below.
 
+    Each function is self-contained so if you need just one of them you can
+    copy paste it into your own code and include right OS headers yourself.
+
     Windows is detected with #ifdef _WIN32 and Linux with #ifdef __linux__.
 
     For seconds and milliseconds a double was chosen, to balance between
